@@ -1,5 +1,6 @@
 package BDD.pages;
 
+import BDD.utillities.BrowserUtils;
 import BDD.utillities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,9 +25,10 @@ public class LoginPage {
         PageFactory.initElements(Driver.getDriver(),this);
     }
 
-    public void  Login(){
-        username.click();
-        password.click();
-        loginButtom.click();
+    public void  Login(String userName, String passWord){
+         username.sendKeys(userName);
+         password.sendKeys(passWord);
+        BrowserUtils.clickWithJS(loginButtom);
+
     }
 }
