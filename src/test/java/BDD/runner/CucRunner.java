@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "BDD/step_def",
         dryRun = false,
-        tags = "@MultipleSrarch"
+        tags = "@cars"
 )
 public class CucRunner {
 }
