@@ -3,9 +3,9 @@ Feature: Liogin to Docuport
       Given User on login page
   @task
   Scenario: Login as a client
-    When user enter username
-    And  used enter password
-    And  user click login button
+    When user enter credentials
+      | username | b1g3_advisor@gmail.com |
+      | password | Group3                 |
     Then user on home page
 
 
