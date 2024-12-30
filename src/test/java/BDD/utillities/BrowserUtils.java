@@ -217,7 +217,7 @@ public class BrowserUtils {
 
     public static void clickWithNormalizeSpace(String text){
         try{
-            List<WebElement> foundElements = Driver.getDriver().findElements(By.xpath("//*[normalize-space()='" + text + "']/../input"));
+            List<WebElement> foundElements = Driver.getDriver().findElements(By.xpath("//*[normalize-space()='" + text + "']"));
             for (WebElement each : foundElements){
                 BrowserUtils.waitForVisibility(each,10);
                 each.click();
