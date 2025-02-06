@@ -7,11 +7,16 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import javax.xml.validation.Validator;
 import java.time.Duration;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 public class BrowserUtils {
+
+    private static final Logger logger = Logger.getLogger(Validator.class.getName());
+
 
     public static Scenario myScenario;
 
@@ -33,7 +38,7 @@ public class BrowserUtils {
      * @param driver
      * @param expectedUrl
      * @param expectedTitle
-     * @autor sergii
+     * @autor Sergii
      * inmplement assertion
      */
     public static void switchWindowAndValidate(WebDriver driver, String expectedUrl, String expectedTitle){
@@ -145,6 +150,7 @@ public class BrowserUtils {
         return wait.until(ExpectedConditions.visibilityOf(element));
 
     }
+
     /**
      * Waits for the provided element to be invisible on the page
      * @param element
@@ -191,6 +197,42 @@ public class BrowserUtils {
 
         }
     }
+
+    public static void clickButtonByText(String elementText) {
+        try {
+            List<WebElement> foundElements = Driver.getDriver().findElements(By.xpath("//*[text()='" + elementText + "']"));
+            if (!foundElements.isEmpty()) {
+                for (WebElement el : foundElements) {
+                        el.click();
+                        logger.info("Clicked element with text: '" + elementText + "'");
+                        break; // Stop after the first click if only one click is desired
+                }
+            } else {
+                logger.warning("Element with text '" + elementText + "' is not displayed.");
+            }
+        } catch (Exception e) {
+            logger.severe("Error finding elements with text: '" + elementText + "'. Exception: " + e.getMessage());
+        }
+    }
+
+    public static void clickWithNormalizeSpace(String text){
+        try{
+            List<WebElement> foundElements = Driver.getDriver().findElements(By.xpath("//*[normalize-space()='" + text + "']"));
+            for (WebElement each : foundElements){
+                BrowserUtils.waitForVisibility(each,10);
+                each.click();
+            }
+        }catch (Exception e){
+            logger.info(" Can't Click Element " +text);
+        }
+    }
+
+    public static  void justClick(String name){
+        Driver.getDriver().findElement(By.xpath("//*[contains(text(),'"+name+"')]")).click();
+    }
+
+
+
 
 
 

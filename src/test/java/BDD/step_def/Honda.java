@@ -1,6 +1,7 @@
 package BDD.step_def;
 
 import BDD.pages.HondaBasePage;
+import BDD.utillities.BrowserUtils;
 import BDD.utillities.ConfigurationReader;
 import BDD.utillities.Driver;
 import io.cucumber.java.en.Given;
@@ -9,6 +10,7 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.PageFactory;
+import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
@@ -25,9 +27,10 @@ public class Honda {
         hondaBasePage.searchBox.sendKeys("Honda Accord 2023"+ Keys.ENTER);
     }
     @Then("user should see  honda accord in title")
-    public void user_shoul_see_honda_accord_in_title() {
-       Driver.getDriver().getTitle();
-        Assert.assertEquals("Honda Accord 2023 - Google Search",Driver.getDriver().getTitle());
+    public void user_shoul_see_honda_accord_in_title() throws InterruptedException {
+       //Driver.getDriver().getTitle();
+        Thread.sleep(1000);
+        assertEquals("Honda Accord 2023 - Google Search",Driver.getDriver().getTitle());
     }
 
 
@@ -37,8 +40,9 @@ public class Honda {
     }
 
     @Then("user should see  {string} in title")
-    public void user_should_see_in_title(String validation) {
-        System.out.println(Driver.getDriver().getTitle());
+    public void user_should_see_in_title(String validation) throws InterruptedException {
+        Thread.sleep(1000);
+
         Assert.assertEquals(validation,Driver.getDriver().getTitle());
 
 
@@ -50,7 +54,7 @@ public class Honda {
             for (String each : items){
                 hondaBasePage.searchBox.clear();
                 hondaBasePage.searchBox.sendKeys(each + Keys.ENTER);
-                Assert.assertEquals(each + " - Google Search" , Driver.getDriver().getTitle());
+                Assert.assertEquals(each + " - Google Search",Driver.getDriver().getTitle());
             }
 
 

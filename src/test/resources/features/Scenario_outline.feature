@@ -1,6 +1,6 @@
 Feature: New Scenario Outline
 
-  @cars
+  @Multithread
   Scenario Outline:
     Given user on google page
     When user search cars "<Brand>"
@@ -9,4 +9,4 @@ Feature: New Scenario Outline
       | Brand  | Company             |
       | Honda  | Honda Motor Company |
       | Toyota | Toyota              |
-      | Vovlo  | Volvo Cars          |
+      | Volvo  | Volvo Cars          |

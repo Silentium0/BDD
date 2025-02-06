@@ -4,6 +4,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
+
 public class PizzaOrderWebTableUtils {
 
     /**
@@ -42,4 +45,24 @@ public class PizzaOrderWebTableUtils {
         WebElement element = driver.findElement(By.xpath("//td[.='"+name+"']//following-sibling::td"+ index));
         return element.getText().trim();
     }
+
+
+
+    public static void checkBoxWebTable(String Name) {
+        String xpath = "//td[text()='" + Name + "']/preceding-sibling::td//input[@type='checkbox']";
+
+        try {
+            WebElement checkbox = Driver.getDriver().findElement(By.xpath(xpath));
+            checkbox.click();
+        } catch (NoSuchElementException e) {
+            System.out.println("Checkbox not found for cardNumber: " + Name);
+            throw e;
+        }
+    }
+
+
+
+
+
+
 }
