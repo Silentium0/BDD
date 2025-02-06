@@ -12,7 +12,7 @@ import org.junit.runner.RunWith;
         features = "src/test/resources/features",
         glue = "BDD/step_def",
         dryRun = false,
-        tags = "@link"
+        tags = "@fillForm"
 )
 public class CukesRunner {
   }

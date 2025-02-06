@@ -39,7 +39,6 @@ public class DropDownValidation {
         Assert.assertEquals(items, actualItems);
 
 
-
     }
 
 }

@@ -46,6 +46,12 @@ public class WebElementsDocuport {
     @FindBy(xpath = "//thead[@class='v-data-table-header']/tr/th/div/div/div")
     public WebElement leadsCheckBox;
 
+    @FindBy(xpath = "//label[text()='Recipient’s email address']/following-sibling::input")
+    public WebElement InputFieldEmail;
+
+    @FindBy(xpath = "//thead[@class='v-data-table-header']/following-sibling::tbody/tr[2]/td[7]/div/button[4]")
+    public WebElement shareButton;
+
 
 
 
